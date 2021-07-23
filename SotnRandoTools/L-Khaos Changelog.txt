@@ -1,0 +1,18 @@
+V1.0
+Modded HP/Atk Values for Horde Ban list/Endurance list for Lakifume's Hard patch
+Added Frankfurter to HeavyHelp list
+
+V1.1
+Changed HP Values again
+Removed Crisaegrim, Duplicator, and Ring of Varda From HeavyHelp list
+Added Garnet, Ring of Arcana, Walk Armor, Ruby/Opal/Cat-Eye/Coral Circlets, Goddess Shield, Herald Shield, Library card, and Meal ticket to MediumHelp list
+Moved Mourneblade and Osafune katana from Medium to Heavy
+Moved Turquise from Medium to Light
+Moved Talisman and Blood Cloak from Light to Medium
+Added Crystal Cloak to Light
+Added Opal to Heavy
+Light/Medium help no longer apply potions
+Heavy Help is less biased towards relics
+
+V1.2
+Added Library Command
