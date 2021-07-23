@@ -45,6 +45,7 @@ namespace SotnRandoTools
             this.crippleButton = new System.Windows.Forms.Button();
             this.meltyButton = new System.Windows.Forms.Button();
             this.magicianButton = new System.Windows.Forms.Button();
+			this.libraryButton = new System.Windows.Forms.Button();
             this.honestButton = new System.Windows.Forms.Button();
             this.battleOrdersButton = new System.Windows.Forms.Button();
             this.heavyHelpButton = new System.Windows.Forms.Button();
@@ -79,6 +80,7 @@ namespace SotnRandoTools
             this.controlBox.Controls.Add(this.crippleButton);
             this.controlBox.Controls.Add(this.meltyButton);
             this.controlBox.Controls.Add(this.magicianButton);
+			this.controlBox.Controls.Add(this.libraryButton);
             this.controlBox.Controls.Add(this.honestButton);
             this.controlBox.Controls.Add(this.battleOrdersButton);
             this.controlBox.Controls.Add(this.heavyHelpButton);
@@ -567,8 +569,22 @@ namespace SotnRandoTools
             this.modePanel.ResumeLayout(false);
             this.modePanel.PerformLayout();
             this.ResumeLayout(false);
-
-        }
+			//
+			// libraryButton
+			// 
+			this.libraryButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int) (((byte) (57)))), ((int) (((byte) (21)))), ((int) (((byte) (57)))));
+			this.libraryButton.FlatAppearance.BorderSize = 2;
+			this.libraryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (67)))), ((int) (((byte) (35)))), ((int) (((byte) (67)))));
+			this.libraryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int) (((byte) (48)))), ((int) (((byte) (20)))), ((int) (((byte) (48)))));
+			this.libraryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.libraryButton.Location = new System.Drawing.Point(6, 289);
+			this.libraryButton.Name = "libraryButton";
+			this.libraryButton.Size = new System.Drawing.Size(134, 26);
+			this.libraryButton.TabIndex = 23;
+			this.libraryButton.Text = "Library";
+			this.libraryButton.UseVisualStyleBackColor = true;
+			this.libraryButton.Click += new System.EventHandler(this.libraryButton_Click);
+		}
 
         #endregion
 
@@ -588,6 +604,7 @@ namespace SotnRandoTools
 		private System.Windows.Forms.Button lightHelpButton;
 		private System.Windows.Forms.Button battleOrdersButton;
 		private System.Windows.Forms.Button magicianButton;
+		private System.Windows.Forms.Button libraryButton;
 		private System.Windows.Forms.Button honestButton;
 		private System.Windows.Forms.Button meltyButton;
 		private System.Windows.Forms.Button bloodManaButton;

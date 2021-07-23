@@ -73,18 +73,19 @@ namespace SotnRandoTools.Khaos
 			"Axe Lord armor",
 			"Alucart mail",
 			"Royal cloak",
-			"Blood cloak",
 			"Zircon",
 			"Aquamarine",
 			"Lapis lazuli",
+			"Turquoise",
 			"Medal",
-			"Talisman"
+			"Crystal cloak"
 		};
 		private string[] mediumHelpItems =
 		{
 			"Fire shield",
 			"Alucard shield",
 			"Cross shuriken",
+			"Blood cloak",
 			"Buffalo star",
 			"Flame star",
 			"Estoc",
@@ -92,24 +93,35 @@ namespace SotnRandoTools.Khaos
 			"Gram",
 			"Holy sword",
 			"Dark Blade",
-			"Mourneblade",
-			"Osafune katana",
 			"Topaz circlet",
 			"Beryl circlet",
+			"Ruby circlet",
+			"Opal circlet",
+			"Cat-eye circl.",
+			"Coral circlet",
 			"Fury plate",
 			"Joseph's cloak",
 			"Twilight cloak",
 			"Moonstone",
-			"Turquoise",
 			"Onyx",
 			"Mystic pendant",
 			"Gauntlet",
 			"Ring of Feanor",
-			"King's stone"
+			"King's stone",
+			"Library card",
+			"Meal ticket",
+			"Goddess shield",
+			"Talisman",
+			"Herald shield",
+			"Walk armor",
+			"Garnet",
+			"Ring of arcana"
 		};
 		private string[] heavyHelpItems =
 		{
+			"Osafune katana",
 			"Shield rod",
+			"Mourneblade",
 			"Iron shield",
 			"Medusa shield",
 			"Alucard shield",
@@ -124,7 +136,6 @@ namespace SotnRandoTools.Khaos
 			"Gurthang",
 			"Alucard sword",
 			"Vorpal blade",
-			"Crissaegirm",
 			"Yasatsuna",
 			"Library card",
 			"Dragon helm",
@@ -135,11 +146,12 @@ namespace SotnRandoTools.Khaos
 			"God's Garb",
 			"Diamond",
 			"Ring of Ares",
-			"Ring of Varda",
-			"Duplicator",
 			"Covenant stone",
 			"Gold Ring",
-			"Silver Ring"
+			"Silver Ring",
+			"Frankfurter",
+			"Opal"
+
 		};
 		private string[] progressionRelics =
 		{
@@ -172,6 +184,7 @@ namespace SotnRandoTools.Khaos
 		private System.Timers.Timer enduranceSpawnTimer = new();
 		private System.Timers.Timer vampireTimer = new();
 		private System.Timers.Timer magicianTimer = new();
+		private System.Timers.Timer LibraryTimer = new();
 		private System.Timers.Timer meltyTimer = new();
 		private System.Timers.Timer fourBeastsTimer = new();
 		private System.Timers.Timer zawarudoTimer = new();
@@ -189,41 +202,41 @@ namespace SotnRandoTools.Khaos
 		private List<Actor> bannedEnemies = new();
 		private List<SearchableActor> bannedHordeEnemies = new List<SearchableActor>
 		{
-			new SearchableActor {Hp = 32, Damage = 20, Sprite = 63296},  // Warg
-			new SearchableActor {Hp = 27, Damage = 7, Sprite = 8820},    // Spellbook
-			new SearchableActor {Hp = 22, Damage = 12, Sprite = 11688},  // Magic Tome
-			new SearchableActor {Hp = 18, Damage = 6, Sprite = 54040},   // Ectoplasm
-			new SearchableActor {Hp = 16, Damage = 16, Sprite = 38652},  // Frozen Shade
+			new SearchableActor {Hp = 60, Damage = 20, Sprite = 63296},  // Warg
+			new SearchableActor {Hp = 44, Damage = 7, Sprite = 8820},    // Spellbook
+			new SearchableActor {Hp = 66, Damage = 12, Sprite = 11688},  // Magic Tome
+			new SearchableActor {Hp = 36, Damage = 6, Sprite = 54040},   // Ectoplasm
+			new SearchableActor {Hp = 60, Damage = 16, Sprite = 38652},  // Frozen Shade
 			new SearchableActor {Hp = 30, Damage = 20, Sprite = 60380},  // Spectral Weapons
-			new SearchableActor {Hp = 32, Damage = 16, Sprite = 16520},  // Slime
-			new SearchableActor {Hp = 100, Damage = 35, Sprite = 28812}, // Blue Venus Weed Unflowered
-			new SearchableActor {Hp = 550, Damage = 45, Sprite = 31040}, // Blue Venus Weed Flowered
-			new SearchableActor {Hp = 88, Damage = 35, Sprite = 24208},  // Cave Troll
-			new SearchableActor {Hp = 50, Damage = 40, Sprite = 9240}	 // Sniper of Goth
+			new SearchableActor {Hp = 48, Damage = 16, Sprite = 16520},  // Slime
+			new SearchableActor {Hp = 400, Damage = 35, Sprite = 28812}, // Blue Venus Weed Unflowered
+			new SearchableActor {Hp = 1000, Damage = 45, Sprite = 31040}, // Blue Venus Weed Flowered
+			new SearchableActor {Hp = 244, Damage = 35, Sprite = 24208},  // Cave Troll
+			new SearchableActor {Hp = 200, Damage = 40, Sprite = 9240}	 // Sniper of Goth
 		};
 		private List<SearchableActor> enduranceBosses = new List<SearchableActor>
 		{
-			new SearchableActor {Hp = 200, Damage = 6, Sprite = 18296},    // Slogra
-			new SearchableActor {Hp = 200, Damage = 7, Sprite = 22392},    // Gaibon
-			new SearchableActor {Hp = 120, Damage = 7, Sprite = 14260},    // Doppleganger 10
-			new SearchableActor {Hp = 300, Damage = 20, Sprite = 9884},    // Minotaur
-			new SearchableActor {Hp = 260, Damage = 20, Sprite = 14428},   // Werewolf
-			new SearchableActor {Hp = 400, Damage = 20, Sprite = 56036},   // Lesser Demon
-			new SearchableActor {Hp = 500, Damage = 20, Sprite = 43920},   // Karasuman
-			new SearchableActor {Hp = 800, Damage = 18, Sprite = 7188},    // Hippogryph
+			new SearchableActor {Hp = 600, Damage = 6, Sprite = 18296},    // Slogra
+			new SearchableActor {Hp = 600, Damage = 7, Sprite = 22392},    // Gaibon
+			new SearchableActor {Hp = 200, Damage = 7, Sprite = 14260},    // Doppleganger 10
+			new SearchableActor {Hp = 600, Damage = 20, Sprite = 9884},    // Minotaur
+			new SearchableActor {Hp = 360, Damage = 20, Sprite = 14428},   // Werewolf
+			new SearchableActor {Hp = 1200, Damage = 20, Sprite = 56036},   // Lesser Demon
+			new SearchableActor {Hp = 1000, Damage = 20, Sprite = 43920},   // Karasuman
+			new SearchableActor {Hp = 1200, Damage = 18, Sprite = 7188},    // Hippogryph
 			new SearchableActor {Hp = 666, Damage = 20, Sprite = 54072},   // Olrox
-			new SearchableActor {Hp = 666, Damage = 25, Sprite = 8452},    // Succubus
-			new SearchableActor {Hp = 800, Damage = 20, Sprite = 19772},   // Cerberus
-			new SearchableActor {Hp = 400, Damage = 30, Sprite = 6264},    // Granfaloon
-			new SearchableActor {Hp = 400, Damage = 25, Sprite = 27332},   // Richter
-			new SearchableActor {Hp = 600, Damage = 35, Sprite = 40376},   // Darkwing Bat
-			new SearchableActor {Hp = 1100, Damage = 30, Sprite = 31032},  // Creature
-			new SearchableActor {Hp = 777, Damage = 35, Sprite = 11664},   // Doppleganger 40
-			new SearchableActor {Hp = 888, Damage = 35, Sprite = 46380},   // Death
-			new SearchableActor {Hp = 1100, Damage = 35, Sprite = 6044},   // Medusa
-			new SearchableActor {Hp = 1200, Damage = 40, Sprite = 16564},  // Akmodan
-			new SearchableActor {Hp = 1000, Damage = 9, Sprite = 30724},   // Sypha
-			new SearchableActor {Hp = 1300, Damage = 40, Sprite = 43772}   // Shaft
+			new SearchableActor {Hp = 2800, Damage = 25, Sprite = 8452},    // Succubus
+			new SearchableActor {Hp = 2400, Damage = 20, Sprite = 19772},   // Cerberus
+			new SearchableActor {Hp = 2000, Damage = 30, Sprite = 6264},    // Granfaloon
+			new SearchableActor {Hp = 100, Damage = 25, Sprite = 27332},   // Richter
+			new SearchableActor {Hp = 3200, Damage = 35, Sprite = 40376},   // Darkwing Bat
+			new SearchableActor {Hp = 3600, Damage = 30, Sprite = 31032},  // Creature
+			new SearchableActor {Hp = 800, Damage = 35, Sprite = 11664},   // Doppleganger 40
+			new SearchableActor {Hp = 4444, Damage = 35, Sprite = 46380},   // Death
+			new SearchableActor {Hp = 3000, Damage = 35, Sprite = 6044},   // Medusa
+			new SearchableActor {Hp = 4000, Damage = 40, Sprite = 16564},  // Akmodan
+			new SearchableActor {Hp = 1600, Damage = 9, Sprite = 30724},   // Sypha
+			new SearchableActor {Hp = 2000, Damage = 40, Sprite = 43772}   // Shaft
 		};
 		private SearchableActor shaftActor = new SearchableActor { Hp = 10, Damage = 0, Sprite = 0 };
 		private uint storedMana = 0;
@@ -577,12 +590,12 @@ namespace SotnRandoTools.Khaos
 					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				case 2:
-					alucardApi.ActivatePotion(Potion.Potion);
-					notificationService.AddMessage($"{user} healed you");
+					alucardApi.GrantItemByName(item);
+					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				case 3:
-					alucardApi.ActivatePotion(Potion.ShieldPotion);
-					notificationService.AddMessage($"{user} used a Shield Potion");
+					alucardApi.GrantItemByName(item);
+					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				default:
 					break;
@@ -608,12 +621,12 @@ namespace SotnRandoTools.Khaos
 					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				case 2:
-					alucardApi.ActivatePotion(Potion.Elixir);
-					notificationService.AddMessage($"{user} healed you");
+					alucardApi.GrantItemByName(item);
+					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				case 3:
-					alucardApi.ActivatePotion(Potion.Mannaprism);
-					notificationService.AddMessage($"{user} used a Mana Prism");
+					alucardApi.GrantItemByName(item);
+					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				default:
 					break;
@@ -633,7 +646,7 @@ namespace SotnRandoTools.Khaos
 
 			int relic = rnd.Next(0, progressionRelics.Length);
 
-			int roll = rnd.Next(1, 3);
+			int roll = rnd.Next(1, 4);
 			for (int i = 0; i < 11; i++)
 			{
 				if (!alucardApi.HasRelic((Relic) Enum.Parse(typeof(Relic), progressionRelics[relic])))
@@ -658,6 +671,11 @@ namespace SotnRandoTools.Khaos
 				case 2:
 					alucardApi.GrantRelic((Relic) Enum.Parse(typeof(Relic), progressionRelics[relic]));
 					notificationService.AddMessage($"{user} gave you {(Relic) Enum.Parse(typeof(Relic), progressionRelics[relic])}");
+					break;
+				case 3:
+					Console.WriteLine(item);
+					alucardApi.GrantItemByName(item);
+					notificationService.AddMessage($"{user} gave you a {item}");
 					break;
 				default:
 					break;
@@ -780,6 +798,23 @@ namespace SotnRandoTools.Khaos
 			});
 			Alert("Haste");
 		}
+		public void Library(string user = "Khaos")
+		{
+			alucardApi.ActivatePotion(Potion.SmartPotion);
+			Cheat LibraryCheat = cheats.GetCheatByName("Library");
+			LibraryCheat.PokeValue(65);
+			LibraryCheat.Enable();
+			manaLocked = false;
+			LibraryTimer.Start();
+			notificationService.AddMessage($"{user} Used A Library Card");
+			notificationService.AddTimer(new Services.Models.ActionTimer
+			{
+				Name = KhaosActionNames.Library,
+				Type = Enums.ActionType.Khaotic,
+				Duration = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.Library).FirstOrDefault().Duration
+			});
+			Alert("Library");
+		}
 		#endregion
 
 		public void Update()
@@ -846,6 +881,13 @@ namespace SotnRandoTools.Khaos
 					if (commandAction is not null && commandAction.Enabled)
 					{
 						queuedFastActions.Enqueue(new MethodInvoker(() => Gamble(user)));
+					}
+					break;
+				case "Library":
+					commandAction = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.Library).FirstOrDefault();
+					if (commandAction is not null && commandAction.Enabled)
+					{
+						queuedActions.Add(new QueuedAction { Name = "Library", Type = ActionType.Khaotic, Invoker = new MethodInvoker(() => Library(user)) });
 					}
 					break;
 				#endregion
@@ -1027,6 +1069,8 @@ namespace SotnRandoTools.Khaos
 			vampireTimer.Interval = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.Vampire).FirstOrDefault().Duration.TotalMilliseconds;
 			magicianTimer.Elapsed += MagicianOff;
 			magicianTimer.Interval = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.Magician).FirstOrDefault().Duration.TotalMilliseconds;
+			LibraryTimer.Elapsed += LibraryOff;
+			LibraryTimer.Interval = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.Library).FirstOrDefault().Duration.TotalMilliseconds;
 			meltyTimer.Elapsed += MeltyBloodOff;
 			meltyTimer.Interval = toolConfig.Khaos.Actions.Where(a => a.Name == KhaosActionNames.MeltyBlood).FirstOrDefault().Duration.TotalMilliseconds;
 			fourBeastsTimer.Elapsed += FourBeastsOff;
@@ -1418,7 +1462,7 @@ namespace SotnRandoTools.Khaos
 				Console.WriteLine($"Added banned enemy with hp: {bannedActor.Hp}, damage: {bannedActor.Damage}, sprite: {bannedActor.Sprite}");
 			}
 
-			long enemy = actorApi.FindEnemy(1, gameApi.SecondCastle ? 100 : 35, bannedHordeEnemies);
+			long enemy = actorApi.FindEnemy(10, gameApi.SecondCastle ? 100 : 350, bannedHordeEnemies);
 
 			if (enemy > 0)
 			{
@@ -1591,6 +1635,13 @@ namespace SotnRandoTools.Khaos
 			manaLocked = false;
 			magicianTimer.Stop();
 		}
+		private void LibraryOff(Object sender, EventArgs e)
+		{
+			Cheat LibraryCheat = cheats.GetCheatByName("Library");
+			LibraryCheat.Disable();
+			manaLocked = false;
+			LibraryTimer.Stop();
+		}
 		private void MeltyBloodOff(Object sender, EventArgs e)
 		{
 			Cheat width = cheats.GetCheatByName("AlucardAttackHitboxWidth");
@@ -1680,6 +1731,8 @@ namespace SotnRandoTools.Khaos
 		{
 			Cheat faerieScroll = cheats.GetCheatByName("FaerieScroll");
 			faerieScroll.Enable();
+			Cheat soulOrb = cheats.GetCheatByName("SoulOrb");
+			soulOrb.Enable();
 			Cheat batCardXp = cheats.GetCheatByName("BatCardXp");
 			batCardXp.Enable();
 			Cheat ghostCardXp = cheats.GetCheatByName("GhostCardXp");
@@ -1694,6 +1747,8 @@ namespace SotnRandoTools.Khaos
 			spriteCardXp.Enable();
 			Cheat noseDevilCardXp = cheats.GetCheatByName("NoseDevilCardXp");
 			noseDevilCardXp.Enable();
+			Cheat Library2 = cheats.GetCheatByName("Library2");
+			Library2.Enable();
 		}
 		private void SetSpeed(float factor = 1)
 		{

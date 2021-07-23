@@ -171,6 +171,18 @@ namespace SotnRandoTools
 				khaosControler.Gamble();
 			}
 		}
+		private void libraryButton_Click(object sender, EventArgs e)
+		{
+			if (toolConfig.Khaos.ControlPannelQueueActions)
+			{
+				khaosControler.EnqueueAction(new EventAddAction { Command = "Library", UserName = "Khaos" });
+			}
+			else
+			{
+
+				khaosControler.Library();
+			}
+		}
 		#endregion
 		#region Debuffs
 		private void weakenButton_Click(object sender, EventArgs e)
@@ -324,7 +336,8 @@ namespace SotnRandoTools
 				khaosControler.BattleOrders();
 			}
 		}
-		private void magicianButton_Click(object sender, EventArgs e)
+		private void 
+			Button_Click(object sender, EventArgs e)
 		{
 			if (toolConfig.Khaos.ControlPannelQueueActions)
 			{
