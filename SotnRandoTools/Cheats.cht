@@ -18,5 +18,5 @@
 072F60	8166	N	MainRAM	0	VisualEffectPalette	w	h	0	None	
 097973	03	N	MainRAM	0	FaerieScroll	b	h	0	None	
 09796F	03	N	MainRAM	1	SoulOrb	b	h	0	None	
-097490	2001	N	MainRAM	1	Library2	w	h	0	None	
+097490	0000	N	MainRAM	1	Library2	w	h	0	None	
 073FBE	0041	N	MainRAM	0	Library	w	h	0	None	
