@@ -1,3 +1,5 @@
+#THIS VERSION WAS MADE SPECIFICALLY TO WORK WITH LAKIFUME'S HOT GARBAGE PATCH
+
 # Symphony of the Night Randomizer Tools
 
 [![(latest) release | GitHub](https://img.shields.io/github/release/TalicZealot/SotnRandoTools.svg?logo=github&logoColor=333333&style=popout)](https://github.com/TalicZealot/SotnRandoTools/releases/latest)
