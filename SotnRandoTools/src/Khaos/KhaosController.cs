@@ -97,7 +97,6 @@ namespace SotnRandoTools.Khaos
 			"Beryl circlet",
 			"Ruby circlet",
 			"Opal circlet",
-			"Cat-eye circl.",
 			"Coral circlet",
 			"Fury plate",
 			"Joseph's cloak",
@@ -1747,8 +1746,6 @@ namespace SotnRandoTools.Khaos
 			spriteCardXp.Enable();
 			Cheat noseDevilCardXp = cheats.GetCheatByName("NoseDevilCardXp");
 			noseDevilCardXp.Enable();
-			Cheat Library2 = cheats.GetCheatByName("Library2");
-			Library2.Enable();
 		}
 		private void SetSpeed(float factor = 1)
 		{
